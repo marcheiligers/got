@@ -27,15 +27,27 @@
       'White Harbour Harbour': new Area('White Harbour Harbour', AREA_TYPES.HARBOUR, KEEP_TYPE.NONE, 0, 0),
       'The Shivering Sea': new Area('The Shivering Sea', AREA_TYPES.SEA, KEEP_TYPE.NONE, 0, 0),
       'The Narrow Sea': new Area('The Narrow Sea', AREA_TYPES.SEA, KEEP_TYPE.NONE, 0, 0),
-      'Karhold': new Area('Karhold', AREA_TYPES.LAND, KEEP_TYPE.NONE, 0, 1)
+      'Karhold': new Area('Karhold', AREA_TYPES.LAND, KEEP_TYPE.NONE, 0, 1),
+      'Moat Calin': new Area('Moat Calin', AREA_TYPES.LAND, KEEP_TYPE.CASTLE, 0, 0),
+      'The Twins': new Area('The Twins', AREA_TYPES.LAND, KEEP_TYPE.NONE, 0, 1),
+      'The Mountains of the Moon': new Area('The Mountains of the Moon', AREA_TYPES.LAND, KEEP_TYPE.NONE, 1, 0),
+      'Crackclaw Point': new Area('Crackclaw Point', AREA_TYPES.LAND, KEEP_TYPE.CASTLE, 0, 0),
+      'Harrenhal': new Area('Harrenhal', AREA_TYPES.LAND, KEEP_TYPE.CASTLE, 0, 1),
     }
 
-    this.setNeighbours('Winterfell', ['White Harbour', 'The Shivering Sea', 'Karhold'])
-    this.setNeighbours('White Harbour', ['Winterfell', 'White Harbour Harbour', 'The Shivering Sea', 'The Narrow Sea'])
-    this.setNeighbours('White Harbour', ['White Harbour', 'The Narrow Sea'])
-    this.setNeighbours('The Narrow Sea', ['White Harbour', 'White Harbour Harbour', 'The Shivering Sea'])
-    this.setNeighbours('The Shivering Sea', ['Wintefell', 'White Harbour', 'Karhold', 'The Narrow Sea'])
-    this.setNeighbours('Karhold', ['Wintefell', 'The Shivering Sea'])
+    this.setNeighbours('Winterfell', ['White Harbour', 'The Shivering Sea', 'Karhold', 'Moat Calin'])
+    this.setNeighbours('White Harbour', ['Winterfell', 'White Harbour Harbour', 'The Shivering Sea', 'The Narrow Sea', 'Moat Calin'])
+    this.setNeighbours('White Harbour Harbour', ['White Harbour', 'The Narrow Sea'])
+    this.setNeighbours('The Narrow Sea', 
+      ['White Harbour', 'White Harbour Harbour', 'The Shivering Sea', 'Moat Calin', 'The Twins', 'The Mountains of the Moon', 'Crackclaw Point']
+    )
+    this.setNeighbours('The Shivering Sea', ['Winterfell', 'White Harbour', 'Karhold', 'The Narrow Sea'])
+    this.setNeighbours('Karhold', ['Winterfell', 'The Shivering Sea'])
+    this.setNeighbours('Moat Calin', ['Winterfell', 'The Narrow Sea', 'The Twins', 'White Harbour'])
+    this.setNeighbours('The Twins', ['Moat Calin', 'The Narrow Sea', 'The Mountains of the Moon'])
+    this.setNeighbours('The Mountains of the Moon', ['The Twins', 'The Narrow Sea', 'Crackclaw Point'])
+    this.setNeighbours('Crackclaw Point', ['The Mountains of the Moon', 'The Narrow Sea', 'Harrenhal'])
+    this.setNeighbours('Harrenhal', ['Crackclaw Point'])
   }
 
   Map.prototype.setNeighbours = function(name, neighbours) {
@@ -76,6 +88,29 @@
   Area.prototype.isSea = function() {
     return this.type == AREA_TYPES.SEA
   }
+
+  Area.prototype.isCoastal = function() {
+    if(this._isCoastal != undefined)
+      return this._isCoastal
+
+    if(this.isSea() || this.isHarbour()){
+      return this._isCoastal = false
+    }
+
+    return this._isCoastal = this.neighbours.some(function(neighbour){
+      return neighbour.isSea()
+    })
+
+    return this._isCoastal = false
+  }
+
+  Area.prototype.isLandLocked = function(){
+    return !this.isCoastal()
+  }
+
+  Area.prototype.hasKeep = function(){
+    return this.keep_type != KEEP_TYPE.NONE
+  }  
 
   function Garrison(type, size) {
     this.type = type;

@@ -25,7 +25,7 @@
 
 ## Tips and tricks
 
-#### running tests
+#### Running Tests
 
 * node_modules/nodeunit/bin/nodeunit tests
 
