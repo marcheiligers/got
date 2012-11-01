@@ -77,27 +77,10 @@
     return this.type == AREA_TYPES.SEA
   }
 
-  // Should move to army
-  Area.prototype.canRaid = function(area) {
-    if(!this.isNeighbour(area)) {
-      return false
-    }
-
-    if(this.isLand() && !area.isLand()) {
-      return false
-    }
-
-    if(this.isHarbour() && area.isLand()) {
-      return false
-    }
-
-    return true
-  }
-
   function Garrison(type, size) {
     this.type = type;
     this.size = size;
   }
 
-  global.Map = Map
+  module.exports = Map;
 })(this);

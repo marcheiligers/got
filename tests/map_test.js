@@ -1,4 +1,4 @@
-var Game = require('../models/map')
+var Game = require('../models/_index.js')
 
 exports['neibourliness'] = function(test) {
   var map = new Game.Map();
@@ -38,22 +38,5 @@ exports['sealiness'] = function(test) {
   test.equal(map.areas['Winterfell'].isSea(), false)
   test.equal(map.areas['The Shivering Sea'].isSea(), true)
   test.equal(map.areas['White Harbour Harbour'].isSea(), false)
-  test.done()
-};
-
-exports['raidabilitiness'] = function(test) {
-  var map = new Game.Map();
-  map.initialize();
-  // TODO: more complete raidabilitiness
-  test.equal(map.areas['Winterfell'].canRaid(map.areas['White Harbour']), true)
-  test.equal(map.areas['Winterfell'].canRaid(map.areas['The Shivering Sea']), false)
-  test.equal(map.areas['Winterfell'].canRaid(map.areas['White Harbour Harbour']), false)
-
-  test.equal(map.areas['Karhold'].canRaid(map.areas['White Harbour']), false)
-
-  test.equal(map.areas['The Narrow Sea'].canRaid(map.areas['The Shivering Sea']), true)
-  test.equal(map.areas['The Narrow Sea'].canRaid(map.areas['Karhold']), false)
-  test.equal(map.areas['The Narrow Sea'].canRaid(map.areas['White Harbour']), true)
-  test.equal(map.areas['The Narrow Sea'].canRaid(map.areas['White Harbour Harbour']), true)
   test.done()
 };
