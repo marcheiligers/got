@@ -1,4 +1,4 @@
-# Flappy
+# MEINGOT
 
 ## Node and library Documentation
 
