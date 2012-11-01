@@ -22,3 +22,10 @@
 
 * `npm install nodemon -g`
   * Then run with `nodemon server.js`
+
+## Tips and tricks
+
+#### running tests
+
+* node_modules/nodeunit/bin/nodeunit tests
+
