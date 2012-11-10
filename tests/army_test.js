@@ -5,20 +5,20 @@ exports['raidabilitiness'] = function(test) {
 	var map = new Game.Map()
   map.initialize()
 
-	var army = new Game.Army(map.areas['Winterfell'])    
+	var army = new Game.Army(map.areas['Winterfell'])
   // TODO: more complete raidabilitiness
-  test.equal(army.canRaid(map.areas['White Harbour']), true)
-  test.equal(army.canRaid(map.areas['The Shivering Sea']), false)
-  test.equal(army.canRaid(map.areas['White Harbour Harbour']), false)
+  test.ok(army.canRaid(map.areas['White Harbour']))
+  test.ok(!army.canRaid(map.areas['The Shivering Sea']))
+  test.ok(!army.canRaid(map.areas['White Harbour Harbour']))
 
   army = new Game.Army(map.areas['Karhold'])
-  test.equal(army.canRaid(map.areas['White Harbour']), false)
+  test.ok(!army.canRaid(map.areas['White Harbour']))
 
   army = new Game.Army(map.areas['The Narrow Sea'])
-  test.equal(army.canRaid(map.areas['The Shivering Sea']), true)
-  test.equal(army.canRaid(map.areas['Karhold']), false)
-  test.equal(army.canRaid(map.areas['White Harbour']), true)
-  test.equal(army.canRaid(map.areas['White Harbour Harbour']), true)
+  test.ok(army.canRaid(map.areas['The Shivering Sea']))
+  test.ok(!army.canRaid(map.areas['Karhold']))
+  test.ok(army.canRaid(map.areas['White Harbour']))
+  test.ok(army.canRaid(map.areas['White Harbour Harbour']))
   test.done()
 }
 
@@ -37,4 +37,3 @@ exports['attackiness'] = function(test){
   test.equal(army.defenceValue(), 4)
   test.done()
 }
-
