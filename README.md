@@ -29,3 +29,7 @@
 
 * node_modules/nodeunit/bin/nodeunit tests
 
+## Hostingingness
+
+* App: https://heroku.com
+* Mongo: https://mongolab.com/home
