@@ -33,3 +33,7 @@
 
 * App: https://heroku.com
 * Mongo: https://mongolab.com/home
+
+##Next Week
+* Finish Phases
+* Unpack Move Order Phase
