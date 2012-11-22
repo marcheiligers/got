@@ -18,6 +18,7 @@
 
   function Map() {
     this.areas = []
+    this.initialize()
   }
 
   Map.prototype.initialize = function() {

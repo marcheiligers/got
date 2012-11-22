@@ -3,8 +3,7 @@ var ut = Game.Unit.UNIT_TYPE
 
 exports['raidabilitiness'] = function(test) {
 	var map = new Game.Map()
-  map.initialize()
-
+  
 	var army = new Game.Army(map.areas['Winterfell'])
   army.addUnit(new Game.Unit(ut.FOOTMAN))
 
@@ -35,8 +34,7 @@ exports['raidabilitiness'] = function(test) {
 
 exports['attackiness'] = function(test){
   var map = new Game.Map()
-  map.initialize()
-
+  
   var army = new Game.Army(map.areas['Winterfell'])
   army.addUnit(new Game.Unit(ut.FOOTMAN))
   army.addUnit(new Game.Unit(ut.KNIGHT))
@@ -51,8 +49,7 @@ exports['attackiness'] = function(test){
 
 exports['tokiness'] = function(test){
   var map = new Game.Map()
-  map.initialize()
-
+  
   var army = new Game.Army(map.areas['Winterfell'])
   test.ok(army.isToken())
 
