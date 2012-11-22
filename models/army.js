@@ -6,6 +6,9 @@
   }
 
   Army.prototype.canRaid = function(toArea) {
+    if(this.isToken())
+      return false;
+    
     if(!this.area.isNeighbour(toArea)) {
       return false
     }
@@ -40,6 +43,10 @@
     })
     return total;
   } 
+
+  Army.prototype.isToken = function(){
+    return this.units.length==0
+  }
 
 
 

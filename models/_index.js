@@ -3,8 +3,10 @@ module.exports = {
 	Map: require('../models/map'),
 	Army: require('../models/army'),
 	Unit: require('../models/unit'),
-  Combat: require('../models/combat'),
+  	Combat: require('../models/combat'),
 	HouseCard: require('../models/house_card'),
-  ToWCard: tow.Card,
-  ToWDeck: tow.Deck,
+	Player: require('../models/player'),
+	House: require('../models/house'),	
+  	ToWCard: tow.Card,
+  	ToWDeck: tow.Deck,
 }
