@@ -1,21 +1,12 @@
 (function(global, undefined) {
 
-//IT IS BROKEN OVER HERE!!!!!!
-  var Game = require('../models/game')
+  var MarchPhase = require('../models/march_phase')
 
-  console.log(Game)
-
-  var VictoryPhase = Game.VictoryPhase;
-
-  console.log(VictoryPhase)
-
-  function RaidPhase(game)
-  {
+  function RaidPhase(game) {
     this.game = game
   }
 
-  RaidPhase.prototype.update = function(orders)
-  {
+  RaidPhase.prototype.update = function(orders) {
   }
 
   RaidPhase.prototype.isComplete = function(){
@@ -23,7 +14,7 @@
   }
 
   RaidPhase.prototype.nextPhase = function(){
-    return VictoryPhase
+    return MarchPhase
   }
 
   module.exports = RaidPhase

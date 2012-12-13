@@ -8,8 +8,7 @@
     this.orders = []
   }
 
-  OrdersPhase.prototype.update = function(orders)
-  {
+  OrdersPhase.prototype.update = function(orders) {
     this.orders.push(orders)
   }
 
